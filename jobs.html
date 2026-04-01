@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>ULM Job Selection</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+            margin: 0;
+            background-color: #11191f;
+            color: #fff;
+        }
+        nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            position: fixed;
+            background-color: none;
+            z-index: 1000;
+        }
+        #sidebar {
+            position: relative;
+            top: 5.5rem;
+            width: 250px;
+            background: rgba(255,255,255,0.1);
+            height: 78%;
+            padding: 20px;
+            border-radius: 5px;
+            margin-left: 30px;
+            box-sizing: border-box;
+        }
+        #main-content {
+            position: relative;
+            top: 2rem;
+            flex-grow: 1;
+            padding: 60px 20px 20px 20px;
+            overflow-y: auto;
+        }
+        .info-box {
+            margin: 20px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .info-box:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .job-listing {
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin: 10px 0;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .job-listing:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .hidden {
+            display: none;
+        }
+        .content {
+            position: relative;
+            top: 9rem;
+            left: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="homepage.html">
+        <img src="ulm_logo.png" alt="ULM Jobs Logo" style="height: 50px;">
+        </a>
+        <p><strong>Welcome Sulav!</strong></p>
+    </nav>
+    <div id="sidebar">
+        <p><strong>Select:</strong></p>
+        <div class="info-box" onclick="showDetails('worker03', true)">03-Worker</div>
+        <div class="info-box" onclick="showDetails('worker04', true)">04-Worker</div>
+    </div>
+    <div class="content">
+        <p><strong>Worker Descriptions:</strong></p>
+        <p>03-Worker: This role involves various tasks to support university operations, including administrative and logistical support.</p>
+        <p>04-Worker: This position focuses more on technical support and IT-related tasks within the university.</p>
+    </div>
+    <div id="main-content">
+        <div id="worker03" class="hidden">
+            <p><strong>Department Options:</strong></p>
+            <div class="info-box" onclick="showJobs('successCenter')">Success Center</div>
+            <div class="info-box" onclick="showJobs('athleticDept')">Athletic Department</div>
+            <div class="info-box" onclick="showJobs('aramark')">Aramark</div>
+            <div class="info-box" onclick="showJobs('library')">Library</div>
+        </div>
+        <div id="worker04" class="hidden">
+            <p><strong>Department Options:</strong></p>
+            <div class="info-box" onclick="showJobs('successCenter')">Success Center</div>
+            <div class="info-box" onclick="showJobs('athleticDept')">Athletic Department</div>
+            <div class="info-box" onclick="showJobs('aramark')">Aramark</div>
+            <div class="info-box" onclick="showJobs('library')">Library</div>
+        </div>
+    </div>
+
+    <script>
+        function showDetails(workerId, showDept) {
+            const allWorkers = document.querySelectorAll('#main-content > div');
+            allWorkers.forEach(div => {
+                div.classList.add('hidden'); // Hide all sections
+            });
+            const selectedWorker = document.getElementById(workerId);
+            selectedWorker.classList.remove('hidden'); // Show the selected worker's details
+    
+            const depts = selectedWorker.querySelectorAll('.info-box');
+            depts.forEach(dept => dept.classList.toggle('hidden', !showDept));
+    
+            // Hide the .content div when any worker details are shown
+            document.querySelector('.content').style.display = 'none';
+        }
+    
+        function showJobs(department) {
+            const contentDiv = document.getElementById('main-content');
+            contentDiv.innerHTML = `<div onclick="showBack()" class="info-box">Back</div>`; // Insert Back button
+            const jobs = {
+                'successCenter': [{title: 'Tutor', desc: 'Help students in various subjects.', pay: '7.5/hr'}, 
+                                  {title: 'Coordinator', desc: 'Manage tutoring schedules.', pay: '10/hr'}],
+                'athleticDept': [{title: 'Coach Assistant', desc: 'Assist in team preparations.', pay: '11/hr'}, 
+                                 {title: 'Equipment Manager', desc: 'Maintain sports equipment.', pay: '8.5/hr'}],
+                'aramark': [{title: 'Catering Staff', desc: 'Provide catering services at events.', pay: '13/hr'}, 
+                            {title: 'Maintenance', desc: 'General cleaning and upkeep.', pay: '15/hr'}],
+                'library': [{title: 'Librarian Aide', desc: 'Assist librarians in organizing books.', pay: '10/hr'}, 
+                            {title: 'Archivist', desc: 'Help manage library archives.', pay: '10/hr'}]
+            };
+            jobs[department].forEach(job => {
+                const jobDiv = document.createElement('div');
+                jobDiv.className = 'job-listing';
+                jobDiv.innerHTML = `<strong>${job.title}</strong><p>${job.desc}</p><p>Pay: ${job.pay}</p>`;
+                contentDiv.appendChild(jobDiv);
+            });
+        }
+    
+        function showBack() {
+            document.querySelectorAll('#main-content > div').forEach(div => {
+                div.classList.add('hidden');  // Hide all job listings
+            });
+            document.querySelectorAll('.info-box').forEach(box => {
+                box.classList.remove('hidden');  // Show all departments again
+            });
+            // Show the .content div when going back
+            document.querySelector('.content').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

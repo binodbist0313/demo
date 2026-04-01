@@ -1,0 +1,70 @@
+body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 2rem;
+}
+
+#logo {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 7rem;
+    height: 250px;
+    width: 250px;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.loginintro {
+    font-size: 2em;
+    margin-left: 2.3em;
+}
+
+.loginparagraph {
+    position: relative;
+    bottom: 49px;
+    left: 95px;
+    font-size: 17px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#login-box {
+    position: relative;
+    left: 40px;
+    top: 20px;
+    margin: auto;
+    border-radius: 4px;
+    
+    padding: 1rem;
+
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.03);
+    width: 400px;
+}
+
+#login-box:hover {
+    box-shadow: 0 0 20px rgba(215, 215, 215, 0.1);
+}
+
+.field {
+    margin-bottom: 1rem;
+    
+}
+.forget_p,.create_n{
+    position: relative;
+    left: 40px;
+    top: 30px;
+
+
+}
+button a{
+    color: white;
+}
+button a:hover{
+    color: white;
+    text-decoration: none;
+}

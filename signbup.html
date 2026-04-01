@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>ULM Jobs Signup</title>
+    <link rel="stylesheet" href="style_s1.css">
+</head>
+<body>
+    <div id="logo-section">
+        <img src="ulm_logo.png" alt="ULM Jobs Logo" id="logo">
+        <div class="text-content">
+            <h2 class="loginintro">ULM JOB CONNECT</h2>
+            <p class="loginparagraph">Sign up to connect with on-campus jobs at ULM!</p>
+        </div>
+    </div>
+    <div id="login-box">
+        <h3>Signup For Student</h3>
+        <form action="login_s.html" method="POST">
+            <div class="field">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" required>
+            </div>
+            <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="field">
+                <label for="newusername">Username</label>
+                <input type="text" id="newusername" name="newusername" required>
+            </div>
+            <div class="field">
+                <label for="newpassword">Password</label>
+                <input type="password" id="newpassword" name="newpassword" required>
+            </div>
+            <div class="field">
+                <label for="confirmpassword">Confirm Password</label>
+                <input type="password" id="confirmpassword" name="confirmpassword" required>
+            </div>
+            <button type="submit"><a href="login_s.html">Sign Up</a></button>
+            <p>Already have an account? <a href="login_s.html">Log in here</a></p>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>ULM Jobs Portal</title>
+    <link rel="stylesheet" href="style_s2.css">
+</head>
+<body>
+    <nav class="navigation">
+        <a href="homepage.html">
+            <img src="ulm_logo.png" alt="ULM Jobs Logo" style="height: 50px;">
+            </a>
+        <p><strong>Welcome Binod!</strong></p>
+    </nav>
+    <div id="login-box">
+        <h3>Job Posting Form</h3>
+        <form>
+            <div class="field">
+                <label for="jobtitle">Job Title</label>
+                <input type="text" id="jobtitle" name="jobtitle" required>
+            </div>
+            <div class="field">
+                <label for="pay">Pay (per hour)</label>
+                <input type="text" id="pay" name="pay" required>
+            </div>
+            <div class="field">
+                <label for="description">Job Description</label>
+                <textarea id="description" name="description" required></textarea>
+            </div>
+            <button ><a href="thankyou.html">Post Job</a></button>
+        </form>
+    </div>
+    <div id="job-listings">
+        <h3>Recent Job Listings</h3>
+        <ul>
+            <li>
+                <strong>Library Printing</strong> - $15/hr
+                <p>The job is to help students in printing. Part time.</p>
+            </li>
+            <!-- Repeat for each job listing -->
+        </ul>
+    </div>
+</body>
+</html>
